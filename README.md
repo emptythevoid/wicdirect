@@ -30,4 +30,13 @@ The policies.json needs to include this directive:
 
 # Fixer scripts
 
-There are two scrips in-progress to help keep CoreInterops working with 
+There are two scrips in-progress to help keep CoreInterops working with the pinpad.  
+
+check_coreinterop.ps1 is a powershell script that's added to Task Scheduler that will constantly test to see if it can load the /Interop/ page.  If it fails, it will restart the CoreInterop service.  To add this as a Scheduled Task:
+
+1. Run as System
+2. Run with highest privileges
+3. Trigger: on a schedule. Daily. Start time 8:00am. Recur every 1 days. Repeat task every 1 minute (this can be adjusted). For a duration of Indefinitely. Enabled.
+4. Actions: start a program. Program/script = powershell   Add arguments: -File "C:\path\to\check_coreinterop.ps1"
+5. Conditions. Allow run on demand. Run task as soon as possible after scheduled start missed.
+
