@@ -28,6 +28,8 @@ The policies.json needs to include this directive:
 }
 ```
 
+An example "example-policies.json" is available in this repo.
+
 # Fixer scripts
 
 There are two scrips in-progress to help keep CoreInterops working with the pinpad.  
@@ -42,4 +44,7 @@ check_coreinterop.ps1 is a powershell script that's added to Task Scheduler that
 5. Conditions. Allow run on demand. Run task as soon as possible after scheduled start missed.
 
 ## corefix
+Corefix is a batch file that must be run as Administrator. It will remove whichever one version of WIC Direct that's currently installed, download the most current version from CDP, and then silently install it.  This will reinstall the CoreInterop service. You *may* need to restart your web browser for it to take effect, since it reinstalls the self-signed CA into Windows Certificate store.
 
+# Which one to use when?
+This is still under research.  However, in most cases
