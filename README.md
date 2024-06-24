@@ -49,6 +49,25 @@ Corefix is a batch file that must be run as Administrator. It will remove whiche
 # What to do, when?
 This is still under research.  However, in most cases, one of two issues seems to regularly occur. 
 
-1. https://localhost:9999/Interop/ is reachable, but the GetVersionInformation query fails and the pinpad does not respond. In this case, the service is running, but is not communicating with the pinpad. Use corefix.bat to reinstall the software.
-2. https://localhost:9999/Interop/ returns a self-signed cert warning and fails. This is most likely to happen in Firefox. Either use a policies.json that includes the "ImportEnterpriseRoots": true  directive, or manually load https://localhost:9999/Interop/ in a tab and allow an exception. (Note, if you're already using a policies.json that clears out profile information on close, such as when using ezEMRx, you need to add the ImportEnterpriseRoots to make the fix permanent)
-3. If cases 1 and 2 are not the problem, something else is preventing communication to the pinpad.
+## Case 1
+https://localhost:9999/Interop/ is reachable, but the GetVersionInformation query fails and the pinpad does not respond. In this case, the service is running, but is not communicating with the pinpad. Use corefix.bat to reinstall the software.
+
+## Case 2
+https://localhost:9999/Interop/ returns a self-signed cert warning and fails. This is most likely to happen in Firefox. Either use a policies.json that includes the "ImportEnterpriseRoots": true  directive, or manually load https://localhost:9999/Interop/ in a tab and allow an exception. (Note, if you're already using a policies.json that clears out profile information on close, such as when using ezEMRx, you need to add the ImportEnterpriseRoots to make the fix permanent)
+
+## Case Other
+If cases 1 and 2 are not the problem, something else is preventing communication to the pinpad.
+
+# Notes
+It's unclear what causes the pinpad to fail in Case 1.  The Coreinterop service is running, but the service fails to interact with the pinpad until it's reinstalled. This seems to correct the issue, but doesn't solve the underlying problem. Even restarting the service or uninstalling/scan-for-changes the pinpad from device manager does not seem to be sufficient.  The browser is *not* complaining about a self-signed cert. Instead, if complains that the CoreInterop GetVersionInformation isn't reachable. If /Interop/ works but GetVersionInformation fails, this only happens when Coreinterops thinks the pinpad is disconnected.
+
+# Ideas
+If we can't figure out why Case 1 occurs, all we can do is try to detect it *before* it's a problem.  The check_coreinterop.ps1 script is told to simply restart the service, but this doesn't usually fix Case 1.  We could adjust this to do something else.  If it detects that /Interop/ is working but GetVersionInformation isn't, we could return a notification or something to indicate to the user that the pinpad isn't communicating with Coreinterop and needs to be fixed.  Since this script runs in the context of SYSTEM, we could also incorporate the corefix into it so that when /Interop/ works but GetVersionInformation doesn't, we can run corefix to reinstall WIC Direct. *HOWEVER*, this assumes the pinpad is always hooked up. If the pinpad is legitimately detached from the computer, this approach will contstantly be reinstalling WIC Direct.  We would need, then, to have the script check to see if *WINDOWS* shows that the pinpad is hooked up (it appears in the Device Manager as "VX 805 Terminal (COM#)", where COM# is whatever COM port it's using).  To re-state:
+
+If  /Interop/ responds and GetVersionInformation *doesn't* respond
+
+and if Device Manager shows presence of VX 805 (somehow)
+
+display a notice that coreinterop is being repaired and run the corefix script
+
+Close browsers?
