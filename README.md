@@ -13,7 +13,7 @@ This query can fail for several reason.
 
 1.) If the CoreInterop Windows service isn't running, all requests to localhost:9999 will fail.
 
-2.) If the pinpad isn't attached, https://localhost:9999/Interop/ will return CoreInterop information, but the full GetVersionInformation link will fail
+2.) If the pinpad isn't attached, https://localhost:9999/Interop/ will return CoreInterop information, but the full GetVersionInformation query will fail
 
 3.) localhost:9999 uses a self-signed cert. The WIC Direct installer generates the CA for this during install and adds it into the Windows Credential store. If this fails, you will get a self-signed security warning and the query will fail.
 
