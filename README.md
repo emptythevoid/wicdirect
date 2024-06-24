@@ -46,5 +46,9 @@ check_coreinterop.ps1 is a powershell script that's added to Task Scheduler that
 ## corefix
 Corefix is a batch file that must be run as Administrator. It will remove whichever one version of WIC Direct that's currently installed, download the most current version from CDP, and then silently install it.  This will reinstall the CoreInterop service. You *may* need to restart your web browser for it to take effect, since it reinstalls the self-signed CA into Windows Certificate store.
 
-# Which one to use when?
-This is still under research.  However, in most cases
+# What to do, when?
+This is still under research.  However, in most cases, one of two issues seems to regularly occur. 
+
+1. https://localhost:9999/Interop/ is reachable, but the GetVersionInformation query fails and the pinpad does not respond. In this case, the service is running, but is not communicating with the pinpad. Use corefix.bat to reinstall the software.
+2. https://localhost:9999/Interop/ returns a self-signed cert warning and fails. This is most likely to happen in Firefox. Either use a policies.json that includes the "ImportEnterpriseRoots": true  directive, or manually load https://localhost:9999/Interop/ in a tab and allow an exception. (Note, if you're already using a policies.json that clears out profile information on close, such as when using ezEMRx, you need to add the ImportEnterpriseRoots to make the fix permanent)
+3. If cases 1 and 2 are not the problem, something else is preventing communication to the pinpad.
