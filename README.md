@@ -7,7 +7,9 @@ The EBT prodweb page will query this webservice at this link:
 
 This will return a json that provides basic information, such as the version of CoreInterop that's installed.
 
-This query can fail for several reasons.
+If this query fails, the WIC Pinpad will fail to operate.  The quickest way to see this behavior is to go into the EBT Search, try to replace someone's card, and click in the card number field.  If everything is working, the pinpad should say "EBT/ACCT#". If it continues to say "VERIFONE Welcome", the Coreinterop query has failed for some reason.
+
+This query can fail for several reason.  
 
 1.) If the CoreInterop Windows service isn't running, all requests to localhost:9999 will fail.
 
@@ -25,3 +27,7 @@ The policies.json needs to include this directive:
 "ImportEnterpriseRoots": true
 }
 ```
+
+# Fixer scripts
+
+There are two scrips in-progress to help keep CoreInterops working with 
