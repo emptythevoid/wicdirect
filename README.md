@@ -19,7 +19,9 @@ This query can fail for several reasons.
 
 The policies.json needs to include this directive:
 
+```
 "Certificates":
 {
 "ImportEnterpriseRoots": true
 }
+```
