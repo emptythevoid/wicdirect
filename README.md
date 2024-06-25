@@ -56,7 +56,7 @@ https://localhost:9999/Interop/ is reachable, but the GetVersionInformation quer
 https://localhost:9999/Interop/ returns a self-signed cert warning and fails. This is most likely to happen in Firefox. Either use a policies.json that includes the "ImportEnterpriseRoots": true  directive, or manually load https://localhost:9999/Interop/ in a tab and allow an exception. (Note, if you're already using a policies.json that clears out profile information on close, such as when using ezEMRx, you need to add the ImportEnterpriseRoots to make the fix permanent)
 
 ## Case Other
-If cases 1 and 2 are not the problem, something else is preventing communication to the pinpad.
+If cases 1 and 2 are not the problem, something else is preventing communication to the pinpad, such as the pinpad being physically disconnected.
 
 # Notes
 It's unclear what causes the pinpad to fail in Case 1.  The Coreinterop service is running, but the service fails to interact with the pinpad until it's reinstalled. This seems to correct the issue, but doesn't solve the underlying problem. Even restarting the service or uninstalling/scan-for-changes the pinpad from device manager does not seem to be sufficient.  The browser is *not* complaining about a self-signed cert. Instead, if complains that the CoreInterop GetVersionInformation isn't reachable. If /Interop/ works but GetVersionInformation fails, this only happens when Coreinterops thinks the pinpad is disconnected.
