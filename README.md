@@ -2,7 +2,7 @@
 
 CDP's WIC Direct runs as a local web service at https://localhost:9999
 
-The EBT prodweb page will query this webservice at this link:
+The EBT prodweb page will query this webservice at this URL:
  https://localhost:9999/Interop/GetVersionInformation?method=jsonp1718055921049&_=1718055921230
 
 This will return a json that provides basic information, such as the version of CoreInterop that's installed.
