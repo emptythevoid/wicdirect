@@ -32,7 +32,8 @@ An example "example-policies.json" is available in this repo.
 
 # Fixer scripts
 
-There are two scripts in-progress to help keep CoreInterops working with the pinpad.  
+## coreinterop_watchdog
+A pair of scripts intended to run as a Scheduled Task periodically to detect if the CoreInterop URL fails to load. If it fails, it will delete and reinstall the service.
 
 ## check_coreinterop.ps1
 check_coreinterop.ps1 is a powershell script that's added to Task Scheduler that will constantly test to see if it can load the /Interop/ page.  If it fails, it will restart the CoreInterop service.  To add this as a Scheduled Task:
