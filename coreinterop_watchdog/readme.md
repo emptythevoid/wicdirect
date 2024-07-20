@@ -11,3 +11,5 @@ a quicker, easier band-aid than a complete re-install.
 
 A sample Scheduled Task xml file is included. This will run the task at Log In,
 and then will preform the check every minute indefinitely.  
+
+The .ps1 and .bat file must be saved in the directory:  C:\core
