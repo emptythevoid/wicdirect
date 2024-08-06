@@ -29,4 +29,4 @@ taskkill /IM "DYMO.WebApi.Win.Host.exe" /F
 Import-PfxCertificate -Password (ConvertTo-SecureString -String "12345" -AsPlainText -Force) -CertStoreLocation Cert:\LocalMachine\My -FilePath C:\cert-fix\dymo.pfx -Exportable
 
 # Start the Dymo Connect WebApi Process
-& “C:\Program Files (x86)\DYMO\DYMO Connect\DYMO.WebApi.Win.Host.exe”
+& "C:\Program Files (x86)\DYMO\DYMO Connect\DYMO.WebApi.Win.Host.exe"
