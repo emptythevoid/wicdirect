@@ -1,0 +1,77 @@
+{
+   "policies": {
+     "Certificates":
+      {
+          "ImportEnterpriseRoots": true
+      },
+     "BlockAboutAddons": true,
+     "StartDownloadsInTempDirectory": true,
+     "BlockAboutConfig": false,
+     "BlockAboutSupport": true,
+     "BlockAboutProfiles": true,
+     "CreateMasterPassword": false,
+     "DisableAppUpdate": true,
+     "DisableBuiltinPDFViewer": false,
+     "DisableDeveloperTools": false,
+     "DisableFeedbackCommands": true,
+     "DisableFirefoxScreenshots": false,
+     "DisableFirefoxAccounts": true,
+     "DisableFirefoxStudies": true,
+     "DisableTelemetry": true,
+     "DisableFormHistory": true,
+     "DisablePocket": true,
+     "DisablePrivateBrowsing": true,
+     "DisableSysAddonUpdate": true,
+     "DisableProfileImport": true,
+     "DisplayBookmarksToolbar": true,
+     "DisplayMenuBar": false,
+     "DontCheckDefaultBrowser": true,
+     "RememberPasswords": false,
+     "SanitizeOnShutdown": true,
+     "OfferToSaveLogins": false,
+     "NewTabPage": true,
+     "HardwareAcceleration": true,
+     "SearchSuggestEnabled": false,
+     "NoDefaultBookmarks": true,
+     "InstallAddonsPermission": {
+       "Default": false
+     },
+     "Preferences": {
+       "dom.allow_scripts_to_close_windows": true
+     },
+     "PopupBlocking": {
+       "Allow": 
+       ["https://ezportal.cdpehs.com",
+	     "https://ezinventory.cdpehs.com",
+	     "https://portal.cdpehs.com",
+	     "https://ebtprodweb.cdpehs.com"],
+       "Default": true,
+       "Locked": true
+     },
+     "FirefoxHome": {
+       "Search": false,
+       "TopSites": false,
+       "Highlights": false,
+       "Pocket": false,
+       "Snippets": false,
+       "Locked": true
+     },
+     "Homepage": {
+       "URL": "https://ezportal.cdpehs.com/ezEMRx/",
+       "Locked": false,
+       "StartPage": "homepage"
+     },
+     "Bookmarks": [
+       {
+         "Title": "ezEMRx Production EHR/PM",
+         "URL": "https://ezportal.cdpehs.com/ezEMRx/",
+         "Placement": "toolbar"
+       },
+       {
+         "Title": "ezEMRx Production Inventory",
+         "URL": "https://ezinventory.cdpehs.com/ezInventory/",
+         "Placement": "toolbar"
+       }
+     ]
+   }
+}
