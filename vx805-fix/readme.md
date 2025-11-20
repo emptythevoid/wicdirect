@@ -11,3 +11,5 @@ Remove/Re-scan
 pnputil /remove-device /deviceid "USB\VID_11CA&PID_0220"
 
 pnputil /scan-devices
+
+Tested on 11/20/25: Removal of the pinpad and restarting it did not resolve the issue.  Having the option "clear PIN history" performed before PIN changed did not help.  Restarting the Coreinterop service did not help, either.
